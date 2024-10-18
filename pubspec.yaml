@@ -1,7 +1,7 @@
 name: flutter_calculator
 description: "A new Flutter project."
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -23,7 +23,7 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
-
+  assets:
+    - assets/images/penguin.png
 
   uses-material-design: true
-
