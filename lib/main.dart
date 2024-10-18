@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Namer App',
+        title: 'Flutter Calculator',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.blue, brightness: Brightness.light),
         ),
         home: MyHomePage(),
       ),
@@ -27,6 +28,11 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
+
+  void generateNewWord() {
+    current = WordPair.random();
+    notifyListeners();
+  }
 }
 
 class MyHomePage extends StatelessWidget {
@@ -35,10 +41,22 @@ class MyHomePage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Namer App'),
+      ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('A random idea:'),
-          Text(appState.current.asLowerCase),
+          Text('A random idea:', style: TextStyle(fontSize: 24)),
+          SizedBox(height: 20),
+          Text(appState.current.asLowerCase, style: TextStyle(fontSize: 32)),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              appState.generateNewWord();
+            },
+            child: Text('Generate New Word'),
+          ),
         ],
       ),
     );
