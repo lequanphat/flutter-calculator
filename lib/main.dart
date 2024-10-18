@@ -42,7 +42,7 @@ class MyHomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Namer App'),
+        title: Text('Calculator App'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
